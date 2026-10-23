@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: os-scheduling-simulator:latest
+    container_name: os-scheduler-lab
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - NODE_ENV=production
+      - ENGINE_PATH=/app/engine/cpu_scheduler
+    restart: unless-stopped

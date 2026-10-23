@@ -1,0 +1,16 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Compiled C Engine binaries
+engine/cpu_scheduler
+engine/cpu_scheduler.exe
+engine/*.o
+engine/*.dSYM/

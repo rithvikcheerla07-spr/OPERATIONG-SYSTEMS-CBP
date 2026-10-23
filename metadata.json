@@ -1,0 +1,8 @@
+{
+  "name": "OS Execution Replay & State Analysis System",
+  "description": "Educational CPU-scheduling tool for Operating Systems with Linux Laboratory featuring state-aware execution replay powered by a Linux-executed C scheduler.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

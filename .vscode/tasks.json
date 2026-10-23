@@ -1,0 +1,76 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "setup",
+      "type": "shell",
+      "command": "node scripts/ensure-deps.js",
+      "problemMatcher": []
+    },
+    {
+      "label": "build-engine",
+      "type": "shell",
+      "command": "make -C engine",
+      "dependsOn": "setup",
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": ["relative", "${workspaceFolder}/engine"]
+      }
+    },
+    {
+      "label": "dev-server",
+      "type": "shell",
+      "command": "npm run dev:server",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^\\[Server\\].*listening",
+          "endsPattern": "^\\[Server\\].*listening"
+        }
+      }
+    },
+    {
+      "label": "dev-client",
+      "type": "shell",
+      "command": "npm run dev:client",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "VITE v.*ready",
+          "endsPattern": "VITE v.*ready"
+        }
+      }
+    },
+    {
+      "label": "prepare",
+      "dependsOrder": "sequence",
+      "dependsOn": ["setup", "build-engine"],
+      "problemMatcher": []
+    },
+    {
+      "label": "run-all",
+      "dependsOn": ["prepare", "dev-server", "dev-client"],
+      "problemMatcher": []
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "npm test",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

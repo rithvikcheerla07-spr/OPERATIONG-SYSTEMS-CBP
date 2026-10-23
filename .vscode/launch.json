@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Full App",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/client",
+      "preLaunchTask": "run-all"
+    },
+    {
+      "name": "Run Server Only (debug)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/index.ts",
+      "runtimeArgs": ["--loader", "tsx"],
+      "preLaunchTask": "build-engine",
+      "env": {
+        "PORT": "3001"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run Tests",
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "test"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Run Full App + Debug Server",
+      "configurations": ["Run Server Only (debug)", "Run Full App"],
+      "stopAll": true
+    }
+  ]
+}

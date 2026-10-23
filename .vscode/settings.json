@@ -1,0 +1,16 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+  "files.associations": {
+    "*.c": "c",
+    "*.h": "c",
+    "Makefile": "makefile"
+  },
+  "cSpell.words": [
+    "FCFS",
+    "SJF",
+    "Gantt",
+    "devcontainer"
+  ]
+}
