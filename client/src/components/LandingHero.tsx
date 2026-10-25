@@ -1,15 +1,13 @@
 import React from 'react';
-import { Play, BookOpen, Layers, Terminal, RotateCcw, Cpu } from 'lucide-react';
+import { Play, Layers, Terminal, RotateCcw } from 'lucide-react';
 
 interface LandingHeroProps {
   onStartSimulation: () => void;
-  onOpenHelp: () => void;
   isSimulating: boolean;
 }
 
 export const LandingHero: React.FC<LandingHeroProps> = ({
   onStartSimulation,
-  onOpenHelp,
   isSimulating,
 }) => {
   return (
@@ -42,14 +40,6 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
               >
                 <Play className="w-4 h-4 fill-current" />
                 <span>{isSimulating ? 'Executing C Engine...' : 'Run Simulation'}</span>
-              </button>
-
-              <button
-                onClick={onOpenHelp}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-300 hover:bg-slate-100/70 text-slate-700 text-sm font-medium transition-colors cursor-pointer"
-              >
-                <BookOpen className="w-4 h-4 text-slate-500" />
-                <span>Lab Reference &amp; Rules</span>
               </button>
             </div>
           </div>

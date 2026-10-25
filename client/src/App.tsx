@@ -13,7 +13,6 @@ import { StateInspector } from './components/StateInspector.tsx';
 import { EventTimeline } from './components/EventTimeline.tsx';
 import { MetricsSummary } from './components/MetricsSummary.tsx';
 import { AlgorithmComparison } from './components/AlgorithmComparison.tsx';
-import { EducationalHelpModal } from './components/EducationalHelpModal.tsx';
 import { AlertCircle } from 'lucide-react';
 
 export default function App() {
@@ -33,7 +32,6 @@ export default function App() {
   const [comparisonResult, setComparisonResult] = useState<ComparisonResult | null>(null);
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [showHelpModal, setShowHelpModal] = useState<boolean>(false);
 
   // Execute simulation against real backend & C engine
   const runSimulation = useCallback(
@@ -148,7 +146,6 @@ export default function App() {
       {/* Educational Landing Hero */}
       <LandingHero
         onStartSimulation={() => runSimulation()}
-        onOpenHelp={() => setShowHelpModal(true)}
         isSimulating={isSimulating}
       />
 
@@ -246,12 +243,6 @@ export default function App() {
         )}
       </main>
 
-      {/* Lab Reference Modal */}
-      <EducationalHelpModal
-        isOpen={showHelpModal}
-        onClose={() => setShowHelpModal(false)}
-      />
-
       {/* Academic Footer */}
       <footer className="border-t border-slate-200 bg-white py-6 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
@@ -262,13 +253,6 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => setShowHelpModal(true)}
-              className="text-slate-600 hover:text-indigo-600 transition-colors cursor-pointer"
-            >
-              Lab Reference
-            </button>
-            <span aria-hidden="true" className="text-slate-300">·</span>
             <span>POSIX C99 &amp; Linux Process Semantics</span>
           </div>
         </div>
